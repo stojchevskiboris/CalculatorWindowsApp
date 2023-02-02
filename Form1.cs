@@ -17,24 +17,23 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void checkZero()
         {
-
+            if (textBox_Result.Text == "0")
+                textBox_Result.Text = "";    
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonClick(object sender, EventArgs e)
         {
-
+            Button button = (Button)sender;
+            if(button.Text!=".")
+                checkZero();
+            textBox_Result.Text = textBox_Result.Text + button.Text;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void clear_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            textBox_Result.Text = "0";
         }
     }
 }
