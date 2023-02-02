@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Калкулатор));
             this.pow2 = new System.Windows.Forms.Button();
-            this.percent = new System.Windows.Forms.Button();
+            this.mult = new System.Windows.Forms.Button();
             this.backspace = new System.Windows.Forms.Button();
             this.divide = new System.Windows.Forms.Button();
             this.nine = new System.Windows.Forms.Button();
@@ -47,9 +47,10 @@
             this.eq = new System.Windows.Forms.Button();
             this.point = new System.Windows.Forms.Button();
             this.zero = new System.Windows.Forms.Button();
-            this.clear = new System.Windows.Forms.Button();
+            this.multiply = new System.Windows.Forms.Button();
             this.textBox_Result = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.upLabel = new System.Windows.Forms.Label();
+            this.copy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pow2
@@ -65,20 +66,22 @@
             this.pow2.TabIndex = 1;
             this.pow2.Text = "x²";
             this.pow2.UseVisualStyleBackColor = false;
+            this.pow2.Click += new System.EventHandler(this.pow2_Click);
             // 
-            // percent
+            // mult
             // 
-            this.percent.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.percent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.percent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.percent.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percent.Location = new System.Drawing.Point(101, 110);
-            this.percent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.percent.Name = "percent";
-            this.percent.Size = new System.Drawing.Size(60, 60);
-            this.percent.TabIndex = 2;
-            this.percent.Text = "%";
-            this.percent.UseVisualStyleBackColor = false;
+            this.mult.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.mult.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.mult.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mult.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mult.Location = new System.Drawing.Point(233, 110);
+            this.mult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mult.Name = "mult";
+            this.mult.Size = new System.Drawing.Size(60, 60);
+            this.mult.TabIndex = 2;
+            this.mult.Text = "*";
+            this.mult.UseVisualStyleBackColor = false;
+            this.mult.Click += new System.EventHandler(this.Clear_Click_1);
             // 
             // backspace
             // 
@@ -86,13 +89,14 @@
             this.backspace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.backspace.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backspace.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backspace.Location = new System.Drawing.Point(233, 110);
+            this.backspace.Location = new System.Drawing.Point(167, 110);
             this.backspace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.backspace.Name = "backspace";
             this.backspace.Size = new System.Drawing.Size(60, 60);
             this.backspace.TabIndex = 3;
             this.backspace.Text = "⌫";
             this.backspace.UseVisualStyleBackColor = false;
+            this.backspace.Click += new System.EventHandler(this.backspace_Click);
             // 
             // divide
             // 
@@ -107,6 +111,7 @@
             this.divide.TabIndex = 8;
             this.divide.Text = "/";
             this.divide.UseVisualStyleBackColor = false;
+            this.divide.Click += new System.EventHandler(this.divide_Click);
             // 
             // nine
             // 
@@ -166,6 +171,7 @@
             this.minus.TabIndex = 13;
             this.minus.Text = "-";
             this.minus.UseVisualStyleBackColor = false;
+            this.minus.Click += new System.EventHandler(this.minus_Click);
             // 
             // six
             // 
@@ -225,6 +231,7 @@
             this.plus.TabIndex = 18;
             this.plus.Text = "+";
             this.plus.UseVisualStyleBackColor = false;
+            this.plus.Click += new System.EventHandler(this.plus_Click);
             // 
             // three
             // 
@@ -284,6 +291,7 @@
             this.eq.TabIndex = 23;
             this.eq.Text = "=";
             this.eq.UseVisualStyleBackColor = false;
+            this.eq.Click += new System.EventHandler(this.eq_Click);
             // 
             // point
             // 
@@ -315,52 +323,65 @@
             this.zero.UseVisualStyleBackColor = false;
             this.zero.Click += new System.EventHandler(this.buttonClick);
             // 
-            // clear
+            // multiply
             // 
-            this.clear.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.clear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.clear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clear.Location = new System.Drawing.Point(167, 110);
-            this.clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(60, 60);
-            this.clear.TabIndex = 24;
-            this.clear.Text = "C";
-            this.clear.UseVisualStyleBackColor = false;
-            this.clear.Click += new System.EventHandler(this.clear_Click);
+            this.multiply.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.multiply.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.multiply.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.multiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multiply.Location = new System.Drawing.Point(101, 110);
+            this.multiply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.multiply.Name = "multiply";
+            this.multiply.Size = new System.Drawing.Size(60, 60);
+            this.multiply.TabIndex = 24;
+            this.multiply.Text = "C";
+            this.multiply.UseVisualStyleBackColor = false;
+            this.multiply.Click += new System.EventHandler(this.clear_Click);
             // 
             // textBox_Result
             // 
+            this.textBox_Result.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox_Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Result.Location = new System.Drawing.Point(35, 60);
             this.textBox_Result.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox_Result.Multiline = true;
             this.textBox_Result.Name = "textBox_Result";
             this.textBox_Result.ReadOnly = true;
-            this.textBox_Result.Size = new System.Drawing.Size(257, 43);
+            this.textBox_Result.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_Result.Size = new System.Drawing.Size(257, 45);
             this.textBox_Result.TabIndex = 25;
             this.textBox_Result.Text = "0";
             this.textBox_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label1
+            // upLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(32, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "label1";
+            this.upLabel.AutoSize = true;
+            this.upLabel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.upLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upLabel.Location = new System.Drawing.Point(32, 26);
+            this.upLabel.Name = "upLabel";
+            this.upLabel.Size = new System.Drawing.Size(0, 25);
+            this.upLabel.TabIndex = 26;
+            // 
+            // copy
+            // 
+            this.copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copy.Location = new System.Drawing.Point(298, 60);
+            this.copy.Name = "copy";
+            this.copy.Size = new System.Drawing.Size(28, 45);
+            this.copy.TabIndex = 27;
+            this.copy.Text = "⧉";
+            this.copy.UseVisualStyleBackColor = true;
+            this.copy.Click += new System.EventHandler(this.copy_Click);
             // 
             // Калкулатор
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 474);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.copy);
+            this.Controls.Add(this.upLabel);
             this.Controls.Add(this.textBox_Result);
-            this.Controls.Add(this.clear);
+            this.Controls.Add(this.multiply);
             this.Controls.Add(this.eq);
             this.Controls.Add(this.point);
             this.Controls.Add(this.zero);
@@ -377,7 +398,7 @@
             this.Controls.Add(this.eight);
             this.Controls.Add(this.seven);
             this.Controls.Add(this.backspace);
-            this.Controls.Add(this.percent);
+            this.Controls.Add(this.mult);
             this.Controls.Add(this.pow2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -392,7 +413,7 @@
 
         #endregion
         private System.Windows.Forms.Button pow2;
-        private System.Windows.Forms.Button percent;
+        private System.Windows.Forms.Button mult;
         private System.Windows.Forms.Button backspace;
         private System.Windows.Forms.Button divide;
         private System.Windows.Forms.Button nine;
@@ -409,9 +430,10 @@
         private System.Windows.Forms.Button eq;
         private System.Windows.Forms.Button point;
         private System.Windows.Forms.Button zero;
-        private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.Button multiply;
+        private System.Windows.Forms.Label upLabel;
         private System.Windows.Forms.TextBox textBox_Result;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button copy;
     }
 }
 
